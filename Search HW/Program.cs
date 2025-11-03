@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-
+// i like recursive its easy to understand and code plus its fast but others like the bubble sort is much slower and harder to code
 namespace Search_HW
 {
     internal class Program
@@ -87,6 +87,8 @@ namespace Search_HW
 
             List<int> nums = GenerateBigList(1000000000);
 
+            stopwatch.Start();
+
             int[] array = { 108, 23, 69, 420, 9 };
             int temporary;
 
@@ -109,11 +111,15 @@ namespace Search_HW
                 Console.Write($"{p} ");
             }
             Console.ReadLine();
+
+            stopwatch.Stop();
+            DisplayRuntime(stopwatch);
         }
 
 
         public int[] SortArray(int[] array, int length, Stopwatch stopwatch)
         {
+            stopwatch.Start();
             for (int i = 1; i < length; i++)
             {
                 var key = array[i];
@@ -144,11 +150,17 @@ namespace Search_HW
                 
             }
 
+            stopwatch.Stop();
+           
+
             DisplayRuntime(stopwatch);
             return array;
         }
-            public int[] SortArray2(int[] array, int left, int right)
-        {
+            public int[] SortArray2(int[] array, int left, int right, Stopwatch stopwatch)
+    
+           
+            {
+            stopwatch.Start();
             if (left < right)
             {
                 int middle = left + (right - left) / 2;
@@ -157,11 +169,13 @@ namespace Search_HW
 
                
             }
-
+            stopwatch.Stop();
+            DisplayRuntime(stopwatch);
             return array;
         }
         public void MergeArray(int[] array, int left, int middle, int right, Stopwatch stopwatch)
         {
+            stopwatch.Start();
             var leftArrayLength = middle - left + 1;
             var rightArrayLength = right - middle;
             var leftTempArray = new int[leftArrayLength];
@@ -198,10 +212,13 @@ namespace Search_HW
             {
                 array[k++] = rightTempArray[j++];
             }
+            stopwatch.Stop();
             DisplayRuntime(stopwatch);
+            
         }
         public int[] SortArray(int[] array, int leftIndex, int rightIndex, Stopwatch stopwatch)
         {
+            stopwatch.Start();
             var i = leftIndex;
             var j = rightIndex;
             var pivot = array[leftIndex];
@@ -228,13 +245,13 @@ namespace Search_HW
                 }
             }
 
-            
 
-           
 
-            return array;
 
+            stopwatch.Stop();
             DisplayRuntime(stopwatch);
+            return array;
+           
         }
         static void DisplayRuntime(Stopwatch stopwatch)
         {
